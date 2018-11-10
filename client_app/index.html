@@ -1,12 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>calculator</title>
-</head>
-<body>
-    
-</body>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>calculator app</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="includes/style.css">
+  </head>
+
+  <body>
+    <p id="calc-title">NOA CALCULATOR</p>
+    <br />
+    <form action="">
+      <h5>NUMBER 1 :</h5>
+      <input type="text" class="form-control" id="num1">
+      <h5>NUMBER 2 :</h5>
+      <input type="text" class="form-control" id="num2">
+      <h5>NUMBER 3 :</h5>
+      <input type="text" class="form-control" id="num3">
+      <h4>FUNCTION :</h4>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="function" id="avg" value="avg">
+        <label class="form-check-label" for="avg">
+          AVG </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="function" id="sum" value="sum">
+        <label class="form-check-label" for="sum">
+          SUM
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="function" id="mult" value="mult">
+        <label class="form-check-label" for="mult">
+          MULT
+        </label>
+      </div>
+      <h4>METHOD:</h4>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="method" id="get" value="get">
+        <label class="form-check-label" for="get">
+          GET
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="method" id="post" value="post">
+        <label class="form-check-label" for="post">
+          POST
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="method" id="put" value="put">
+        <label class="form-check-label" for="put">
+          PUT
+        </label>
+      </div>
+      <button class="btn btn-default" type="submit" id="answer">ANSWER</button>
+    </form>
+    <section class="result">Result:</section>
+    <script>
+      (function () {
+        // POST:
+        $.post("http://localhost/calculator/service_calculator/index.php", {
+            func: "sum",
+            num1: 10,
+            num2: 15,
+            num3: 20
+          },
+          function (data) {
+
+            $(".result").text(`result: ${data.result}`);
+            console.log("Return data: " + data.result);
+          });
+      })();
+      (function () {
+        //GET:
+        $.get("http://localhost/calculator/service_calculator/index.php?num1=1&num2=1&num3=2&func=sum",
+          function (data) {
+            $(".result").text(`result: ${data.result}`);
+            console.log("Return data: " + data.result);
+          });
+      })();
+    </script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+    <script src="script/script.js"></script>
+  </body>
+
 </html>

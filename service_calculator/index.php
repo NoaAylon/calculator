@@ -1,6 +1,5 @@
 <?php
 
-
     if(isset($_GET['num1'])) // receive data via GET
         $num1 = (int)$_GET["num1"]; // convert String to Integer
     else if(isset($_POST['num1'])) // receive data via POST
@@ -8,7 +7,6 @@
     else if(isset($_PUT['num1'])) // receive data via PUT
         $num1 = (int)$_PUT["num1"]; // convert String to Integer
     else $num1 = 50; // if not set=>default will be 50. BTW, if not set, it will be 0.
-
 
     if(isset($_GET['num2'])) $num2 = (int)$_GET["num2"];
     else if(isset($_POST['num2'])) $num2 = (int)$_POST["num2"];
@@ -20,10 +18,15 @@
     else if(isset($_PUT['num3'])) $num3 = (int)$_PUT["num3"];
     else $num3 = 50;
 
-    
-    $func = $_GET['func'];
+    if(isset($_GET['func'])) $func = $_GET['func'];
+    else if (isset($_POST['func'])) $func = $_POST['func'];
+    else $func = $_PUT['func'];
 
     class Calc{
+        
+        public function _construct(){
+            print ('constructor called');
+         }
 
         public function _destruct(){
            print ('destructor called');
@@ -49,7 +52,7 @@
     }else if($func == 'mult'){
       $res = $calculator->mult($num1,$num2,$num3);
     }else if($func == 'avg'){
-       $res = $calculator->avg($num1,$num2,$um3);
+       $res = $calculator->avg($num1,$num2,$num3);
     }else{
         return print('Error');
     }
