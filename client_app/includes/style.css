@@ -13,12 +13,52 @@ html {
     overflow: hidden
 }
 
+a {
+    color: #ff0
+}
+
+#calc-title {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 30px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+label {
+    font-weight: normal;
+    font-size: 16px;
+
+}
+
+.result {
+    margin-top: 20px;
+}
+
+#answer {
+    font-size: 20px;
+}
+
 body {
-    font-size: 26px;
+    font-size: 23px;
     color: #E8E8E8;
     font-family: "Walter Turncoat", cursive;
     display: block;
-    width: 80%;
+    max-width: 35%;
     height: 93%;
     min-height: auto;
     margin: 30px auto 0 auto;
@@ -37,13 +77,4 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-}
-
-a {
-    color: #ff0
-}
-
-#calc-title {
-    margin: -14px 0 -50px;
-    text-align: center;
 }
